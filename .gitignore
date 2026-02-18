@@ -1,0 +1,15 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.swp
+*.swo
+*~
+
+# Claude Code local settings (don't share personal config)
+.claude/settings.local.json
+
+# Node (if any tooling added later)
+node_modules/
