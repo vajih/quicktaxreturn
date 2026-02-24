@@ -101,21 +101,26 @@ Then configure the CPA partner details before going live (see [Configuration](#c
 
 ---
 
-## Configuration
+## CPA Partner
 
-Before deploying, edit `skill/escalation-config.md` and fill in all `[CONFIGURE: ...]` fields:
+Complex returns are routed to:
 
-```
-# Section 1 — CPA firm details
-Firm name:       [your CPA partner's firm name]
-Contact name:    [primary contact at the firm]
-Phone:           [firm phone number]
-Email:           [intake email]
-Booking link:    [Calendly or equivalent booking URL]
-Referral code:   [unique tracking code]
-```
+**[M.S.Ayubi CPA PLLC](https://woodlandsqb.com/)**
+Aisha Moin, CPA
+1790 Hughes Landing Blvd, Building 2, Suite 400
+The Woodlands, TX 77380
+Text: (832) 466-4385 · aisha@woodlandsquickbooks.com
 
-The file includes a configuration checklist (§8) — complete it before launch.
+| Tier | Situation | Price |
+|------|-----------|-------|
+| Simple | W-2 only | $150 |
+| Standard | W-2 + retirement / education | $250 |
+| Complex | Self-employment, rental, multi-state | $400+ |
+| Advisory | Planning consultation | $75/consultation |
+
+Booking: [woodlandsqb.com/contact](https://woodlandsqb.com/contact?ref=taxclaw2025&utm_source=taxclaw&utm_medium=chat&utm_campaign=2025) (Calendly link coming soon)
+
+Full configuration lives in `skill/escalation-config.md`, including escalation scripts, referral tracking, and the pre-launch checklist.
 
 ---
 
