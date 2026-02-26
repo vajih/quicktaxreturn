@@ -1,0 +1,166 @@
+# QuickTaxReturn — ClawHub Skill Manifest
+# https://clawhub.ai/skills/quicktaxreturn
+
+name: quicktaxreturn
+version: 1.0.0
+title: "QuickTaxReturn — AI Tax Preparation"
+tagline: "Send me your W-2. I'll tell you your refund in 2 minutes. Free. Private. No upsells."
+
+author:
+  name: vajih
+  email: "vajihkhan@gmail.com"
+  url: "https://github.com/vajih/quicktaxreturn"
+
+category: finance
+subcategory: tax-preparation
+
+tags:
+  - taxes
+  - tax-preparation
+  - IRS
+  - refund
+  - W-2
+  - 1099
+  - federal-taxes
+  - US-taxes
+  - 1040
+  - EITC
+  - CTC
+  - AOTC
+
+# Skill entry point — the core behavior file
+entrypoint: skill/SKILL.md
+
+# Supporting reference files the agent reads
+references:
+  - skill/tax-rules.md
+  - skill/escalation-config.md
+  - skill/intake-template.md
+
+# Channels this skill is compatible with
+channels:
+  - whatsapp
+  - telegram
+  - slack
+  - webchat
+  - sms
+
+# Scope and limitations
+scope:
+  jurisdiction: "US federal only"
+  tax_year: 2025
+  return_type: "Individual (Form 1040)"
+  state_filing: false
+
+# Forms fully supported (in-scope)
+supported_forms:
+  - id: W-2
+    description: "Wages and salary"
+  - id: 1099-INT
+    description: "Bank interest income"
+  - id: 1099-DIV
+    description: "Dividends"
+  - id: 1099-G
+    description: "Unemployment compensation and state refunds"
+  - id: 1099-R
+    description: "Retirement distributions (IRA, 401k, pension)"
+  - id: SSA-1099
+    description: "Social Security benefits"
+  - id: 1098-E
+    description: "Student loan interest"
+  - id: 1098-T
+    description: "Tuition and education credits (AOTC/LLC)"
+
+# Forms detected and escalated to CPA (out-of-scope)
+escalated_forms:
+  - 1099-NEC
+  - 1099-B
+  - 1099-K
+  - 1099-DA
+  - 1099-C
+  - 1099-S
+  - 1099-MISC
+  - 1098
+  - K-1
+
+# Credits and deductions calculated
+calculations:
+  credits:
+    - "Child Tax Credit (CTC) — $2,200/child"
+    - "Additional Child Tax Credit (ACTC) — up to $1,700/child refundable"
+    - "Earned Income Tax Credit (EITC) — up to $8,046"
+    - "American Opportunity Tax Credit (AOTC) — up to $2,500 (40% refundable)"
+    - "Lifetime Learning Credit (LLC) — up to $2,000"
+    - "Child and Dependent Care Credit"
+  deductions:
+    - "Standard deduction (all filing statuses)"
+    - "Additional standard deduction (age 65+ / blind)"
+    - "Student loan interest — up to $2,500"
+    - "IRA deduction"
+    - "HSA deduction (direct contributions)"
+    - "Educator expenses — up to $300"
+  other:
+    - "Social Security benefit taxability worksheet"
+    - "Early withdrawal penalty (10%, Code 1)"
+    - "Qualified dividend / capital gain preferential rates"
+    - "AMT check (escalates if triggered)"
+    - "Additional Medicare Tax detection ($250k MFJ)"
+
+# Filing status support
+filing_statuses:
+  - Single
+  - "Married Filing Jointly (MFJ)"
+  - "Married Filing Separately (MFS)"
+  - "Head of Household (HOH)"
+  - "Qualifying Surviving Spouse (QSS)"
+
+# Exit routing
+exits:
+  - id: diy
+    label: "DIY Filing"
+    description: "Complete summary + IRS Free File or Direct File recommendation"
+  - id: cpa-handoff
+    label: "CPA Handoff"
+    description: "Structured intake package + booking link for M.S.Ayubi CPA PLLC"
+  - id: advisory
+    label: "Tax Planning Advisory"
+    description: "Post-calculation planning session booking"
+
+# Privacy and data handling
+privacy:
+  data_stays_local: true
+  third_party_apis: false
+  cloud_storage: false
+  note: "All tax data processed locally through OpenClaw. Never transmitted to external services."
+
+# Test coverage
+tests:
+  directory: tests/scenarios/
+  count: 10
+  coverage:
+    - "Single W-2 filer"
+    - "MFJ with two children (CTC)"
+    - "HOH with EITC and ACTC"
+    - "MFJ retirees with Social Security"
+    - "AOTC education credit"
+    - "Early IRA withdrawal penalty"
+    - "Qualified dividends + student loan deduction"
+    - "CTC phase-out at $420k income"
+    - "Self-employment escalation (triage)"
+    - "SS taxability at 85% tier"
+
+# Data sources (all IRS primary sources)
+data_sources:
+  - "Rev. Proc. 2024-40 — TY2025 inflation adjustments"
+  - "IRS Notice 2024-80 — Retirement plan limits"
+  - "Schedule 8812 Instructions (2025) — CTC/ACTC"
+  - "Form 8863 Instructions (2025) — Education credits"
+  - "IRS Publication 915 (2025) — Social Security taxability"
+  - "IRS Publication 596 (2025) — EITC"
+  - "IRS Publication 15 (2025) — FICA rates"
+
+# Annual maintenance
+update_schedule: "November — after IRS releases new Revenue Procedure"
+
+# License
+license: MIT

@@ -1,4 +1,4 @@
-# TaxClaw — AI Tax Preparation Skill for OpenClaw
+# QuickTaxReturn — AI Tax Preparation Skill for OpenClaw
 
 ## What This Is
 An OpenClaw skill that helps US individual taxpayers prepare CY2025 federal returns. Collects documents via conversational chat (WhatsApp, Telegram, Slack), extracts data, calculates refund/liability with explicit arithmetic, and routes users through three exits: DIY filing, CPA handoff, or advisory.

@@ -1,22 +1,22 @@
 #!/bin/bash
-# TaxClaw Project Setup Script
-# Run this from inside your ~/development/taxclaw folder
-# Usage: bash setup-taxclaw.sh
+# QuickTaxReturn Project Setup Script
+# Run this from inside your ~/development/quicktaxreturn folder
+# Usage: bash setup-quicktaxreturn.sh
 
 set -e
 
-echo "🏗️  Setting up TaxClaw project structure..."
+echo "🏗️  Setting up QuickTaxReturn project structure..."
 echo ""
 
 # Verify we're in the right place
 CURRENT_DIR=$(basename "$PWD")
-if [ "$CURRENT_DIR" != "taxclaw" ]; then
-    echo "⚠️  Warning: You're not in a folder called 'taxclaw'."
+if [ "$CURRENT_DIR" != "quicktaxreturn" ]; then
+    echo "⚠️  Warning: You're not in a folder called 'quicktaxreturn'."
     echo "   Current folder: $PWD"
     read -p "   Continue anyway? (y/n) " -n 1 -r
     echo
     if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-        echo "Exiting. cd into your taxclaw folder first."
+        echo "Exiting. cd into your quicktaxreturn folder first."
         exit 1
     fi
 fi
@@ -41,7 +41,7 @@ fi
 # ============================================================
 echo "📝 Creating CLAUDE.md..."
 cat > CLAUDE.md << 'CLAUDE_EOF'
-# TaxClaw — AI Tax Preparation Skill for OpenClaw
+# QuickTaxReturn — AI Tax Preparation Skill for OpenClaw
 
 ## What This Is
 An OpenClaw skill that helps US individual taxpayers prepare CY2025 federal returns. Collects documents via conversational chat (WhatsApp, Telegram, Slack), extracts data, calculates refund/liability with explicit arithmetic, and routes users through three exits: DIY filing, CPA handoff, or advisory.
@@ -124,7 +124,7 @@ echo "📝 Creating .claude/agents/tax-validator.md..."
 cat > .claude/agents/tax-validator.md << 'VALIDATOR_EOF'
 ---
 name: tax-validator
-description: Validates tax calculations, cross-checks form mappings, and verifies consistency across all TaxClaw files. Use after building or modifying any tax-related file.
+description: Validates tax calculations, cross-checks form mappings, and verifies consistency across all QuickTaxReturn files. Use after building or modifying any tax-related file.
 tools:
   - Read
   - Grep
@@ -132,7 +132,7 @@ tools:
   - Bash
 ---
 
-You are a tax calculation validator. Your job is to verify accuracy and consistency across TaxClaw's skill files.
+You are a tax calculation validator. Your job is to verify accuracy and consistency across QuickTaxReturn's skill files.
 
 When invoked, perform these checks:
 
@@ -190,7 +190,7 @@ RESEARCHER_EOF
 echo "📝 Creating skill file placeholders..."
 
 cat > skill/SKILL.md << 'SKILL_EOF'
-# TaxClaw Skill — Placeholder
+# QuickTaxReturn Skill — Placeholder
 
 This file will be built by Claude Code Agent 1.
 See the build guide for the full prompt to use.
@@ -199,7 +199,7 @@ Remove this placeholder content before building.
 SKILL_EOF
 
 cat > skill/tax-rules.md << 'RULES_EOF'
-# TaxClaw Tax Rules — Placeholder
+# QuickTaxReturn Tax Rules — Placeholder
 
 This file will be built by Claude Code Agent 2.
 See the build guide for the full prompt to use.
@@ -208,7 +208,7 @@ Remove this placeholder content before building.
 RULES_EOF
 
 cat > skill/escalation-config.md << 'CONFIG_EOF'
-# TaxClaw Escalation Config — Placeholder
+# QuickTaxReturn Escalation Config — Placeholder
 
 This file will be built by Claude Code Agent 3.
 See the build guide for the full prompt to use.
@@ -217,7 +217,7 @@ Remove this placeholder content before building.
 CONFIG_EOF
 
 cat > skill/intake-template.md << 'TEMPLATE_EOF'
-# TaxClaw Intake Template — Placeholder
+# QuickTaxReturn Intake Template — Placeholder
 
 This file will be built by Claude Code Agent 3.
 See the build guide for the full prompt to use.
@@ -252,7 +252,7 @@ GITIGNORE_EOF
 # ============================================================
 echo "📝 Creating README.md..."
 cat > README.md << 'README_EOF'
-# TaxClaw: Your AI Tax Prep Assistant
+# QuickTaxReturn: Your AI Tax Prep Assistant
 
 > Send me your W-2 and I'll tell you your refund in 2 minutes. Free. Private. No upsells.
 
@@ -268,7 +268,7 @@ Built for Tax Year 2025 (filing in 2026).
 
 ## Installation
 ```
-clawhub install taxclaw
+clawhub install quicktaxreturn
 ```
 
 ## License
@@ -281,7 +281,7 @@ README_EOF
 echo ""
 echo "📦 Creating initial git commit..."
 git add -A
-git commit -m "feat: initial TaxClaw project structure
+git commit -m "feat: initial QuickTaxReturn project structure
 
 - CLAUDE.md with full project context
 - Custom subagents (tax-validator, irs-researcher)
@@ -291,7 +291,7 @@ git commit -m "feat: initial TaxClaw project structure
 
 echo ""
 echo "============================================"
-echo "✅ TaxClaw project setup complete!"
+echo "✅ QuickTaxReturn project setup complete!"
 echo "============================================"
 echo ""
 echo "Your project structure:"
@@ -309,14 +309,14 @@ echo ""
 echo "2. To build files IN PARALLEL (recommended):"
 echo "   Create git worktrees for each agent:"
 echo ""
-echo "   git worktree add ../taxclaw-skill -b feature/skill-core"
-echo "   git worktree add ../taxclaw-rules -b feature/tax-rules"
-echo "   git worktree add ../taxclaw-cpa -b feature/cpa-integration"
+echo "   git worktree add ../quicktaxreturn-skill -b feature/skill-core"
+echo "   git worktree add ../quicktaxreturn-rules -b feature/tax-rules"
+echo "   git worktree add ../quicktaxreturn-cpa -b feature/cpa-integration"
 echo ""
 echo "   Then open 3 iTerm2 tabs:"
-echo "   Tab 1: cd ~/development/taxclaw-skill && claude"
-echo "   Tab 2: cd ~/development/taxclaw-rules && claude"
-echo "   Tab 3: cd ~/development/taxclaw-cpa && claude"
+echo "   Tab 1: cd ~/development/quicktaxreturn-skill && claude"
+echo "   Tab 2: cd ~/development/quicktaxreturn-rules && claude"
+echo "   Tab 3: cd ~/development/quicktaxreturn-cpa && claude"
 echo ""
 echo "3. To build files SEQUENTIALLY (simpler):"
 echo "   Just stay in this folder and run: claude"

@@ -45,7 +45,7 @@ Tier 1 trigger active. Agent must NOT proceed to Question 2.
 ### Agent Response (Script A)
 > "I can see you received a 1099-NEC — that means you have freelance or self-employment income. I want to be upfront: this triggers something called Schedule C and self-employment tax, which involves more complexity than I'm set up to handle accurately. I don't want to give you numbers that are off.
 >
-> The good news is I can connect you with [FIRM NAME], a CPA firm that TaxClaw partners with. They handle exactly this kind of return and have a dedicated booking link for TaxClaw users. Want me to share that?"
+> The good news is I can connect you with [FIRM NAME], a CPA firm that QuickTaxReturn partners with. They handle exactly this kind of return and have a dedicated booking link for QuickTaxReturn users. Want me to share that?"
 
 ### Intake Package Offer (if taxpayer says yes to CPA referral)
 > "Would you like me to put together a summary of what we know so far? You can bring it to your CPA appointment — it has your situation organized so they can get started quickly."
@@ -64,7 +64,7 @@ W-2 also present (CPA will include with Schedule C return):
 ### Booking Link Delivery
 > "Here's the booking link for [FIRM NAME]: [CONFIGURE: booking URL]
 >
-> When you book, let them know TaxClaw sent you — the link already includes a referral code.
+> When you book, let them know QuickTaxReturn sent you — the link already includes a referral code.
 >
 > They'll be able to handle your W-2, your Schedule C for the freelance work, and the self-employment tax calculation all in one return."
 
@@ -87,4 +87,4 @@ A 1099-NEC triggers:
 3. Possible QBI deduction (Section 199A) — up to 20% of qualified business income
 4. Estimated tax obligations — SE taxpayers must pay quarterly
 
-These are outside TaxClaw MVP scope. Attempting to calculate them without all expense data would produce materially incorrect results.
+These are outside QuickTaxReturn MVP scope. Attempting to calculate them without all expense data would produce materially incorrect results.
